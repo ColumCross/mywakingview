@@ -1,10 +1,13 @@
-<div>
+<div class="page">
   <h1>#mywakingview</h1>
   <p>When I was in England I saw an art exhibit where a guy stamped and mailed a postcard with the time he woke up everyday. So, taking inspiration from that, and a couple of other things, for a full year I took a picture of what I saw out my window when I woke up, with the date, time, and location.</p>
   <h2 *ngIf="!finishedLoading">Loading...</h2>
-  <div *ngIf="finishedLoading">
-    <button mat-button (click)="openDialog()">Open dialog</button>
-    <div *ngFor="let post of allPosts">
+  <div *ngIf="finishedLoading" class="content">
+    <div class="buttons">
+      <button mat-raised-button (click)="openTimelapse()">Timelapse</button>
+      <button mat-raised-button (click)="openLocationDialog()">Where I Awoke</button>
+    </div>
+    <div *ngFor="let post of allPosts" class="posts">
       <div class="column">
         <img src={{post.imageURL}} (click)="showDetails(post)"/>
       </div>

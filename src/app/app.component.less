@@ -1,7 +1,23 @@
+.page {
+    padding: 10px;
+    margin: auto;
+}
+.page > p {
+    max-width: 600px;
+    margin: auto;
+    text-align: justify;
+}
+.content {
+    margin: auto;
+    text-align: center;
+    .posts {
+        margin-left: 20px;
+    }
+}
 .column {
     width: 80px;
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 0 5px 5px 0;
     padding: 0;
     text-align: left;
     float: left;
@@ -13,5 +29,12 @@
         &:hover {
             cursor: pointer;
         }
+    }
+}
+.buttons {
+    margin: 10px;
+    text-align: center;
+    button {
+        margin: 20px;
     }
 }
