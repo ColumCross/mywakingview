@@ -1,15 +1,13 @@
 <div mat-dialog-content>
-    <p>timelapse works!</p>
-    <!-- <ngb-carousel #carousel [interval]="1000">
-        <ng-template ngbSlide *ngFor="let img of images; index as i">
+    <ngb-carousel *ngIf="images" [interval]="400">
+        <ng-template ngbSlide *ngFor="let img of posts; index as i">
             <div class="carousel-caption">
-                <h3>My slide {{i + 1}} title</h3>
+              <h3>Day {{i + 1}}</h3>
             </div>
-            <a href="https://www.google.fr/?q=Number+{{i+1}}" target="_blank" rel="nofollow noopener noreferrer">
-                <div class="picsum-img-wrapper">
-                    <img [src]="img" alt="My image {{i + 1}} description">
-                </div>
-            </a>
+              <div class="picsum-img-wrapper">
+                <img [src]="img.imageURL" alt="My image {{i + 1}} description" style="max-width:500px;width: 100%">
+              </div>
+            <!-- </a> -->
         </ng-template>
-    </ngb-carousel> -->
+    </ngb-carousel>
 </div>
