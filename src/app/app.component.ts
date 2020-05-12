@@ -5,6 +5,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { ChartType, ChartOptions } from 'chart.js';
 import { SingleDataSet, Label, monkeyPatchChartJsLegend, monkeyPatchChartJsTooltip } from 'ng2-charts';
 import {TimelapseComponent} from './timelapse/timelapse.component';
+import {TimeGraphComponent} from './time-graph/time-graph.component';
 // import { resolve } from 'dns';
 
 @Component({
@@ -27,6 +28,16 @@ export class AppComponent {
     rockport: 0,
     toronto: 0
   }
+  // Button labels
+  timegraphText = "When I Awoke";
+  timelapseText = "Timelapse";
+  mapdialogText = "Where I Awoke";
+  loadingText = "Loading...";
+  timegraphLabel = this.timegraphText;
+  timelapseLabel = this.timelapseText;
+  mapLabel = this.mapdialogText;
+
+  times = [];
 
   // Initialization Functions
 
@@ -51,7 +62,6 @@ export class AppComponent {
       } else {
         this.allPosts = this.allPosts.reverse();
         console.log("All #mywakingview posts:", this.allPosts);
-        console.log(this.locationhashmap);
         this.finishedLoading = true;
       }
     });
@@ -109,11 +119,17 @@ export class AppComponent {
         image += "blankmap.PNG";
       }
 
+      // Split up the time and date.
+      const timeparts = captionparts[2].split(" ");
+      const time = timeparts[1];
+      this.times.push(time); // Add the time to a big list for the graph dialog.
+
+
       return {
         imageURL: postinfo.node.display_url,
         datetime: captionparts[2],
-        date: captionparts[2].split(" ")[0],
-        time: captionparts[2].split(" ")[1],
+        date: timeparts[0],
+        time: time,
         location: location,
         fullcaption: caption,
         mapimage: image
@@ -127,7 +143,7 @@ export class AppComponent {
    */
   showDetails(post) {
     
-    console.log(post);
+    console.log("Selected post:", post);
 
     // const scrollStrategy = this.dialog.scrollStrategies.reposition();
     this.dialog.open(ImageDialog, {
@@ -139,25 +155,49 @@ export class AppComponent {
     })
   }
 
+  /**
+   * Opens a dialog showing where I woke up.
+   */
   openLocationDialog() {
+    this.mapLabel = this.loadingText;
     this.dialog.open(LocationDialog, {
       data: {
         post: null,
         locations: this.locationhashmap
       },
       maxHeight: '90vh'
-    })
+    }).afterClosed().subscribe(result => {
+      this.mapLabel = this.mapdialogText;
+    });
   }
 
   /**
    * Opens a dialog showing a component that contains a timelapse of all the posts.
    */
   public openTimelapse() {
+    this.timelapseLabel = this.loadingText;
     this.dialog.open(TimelapseComponent, {
       data: {
         posts: this.allPosts
       },
       maxHeight: '90vh'
+    }).afterClosed().subscribe(result => {
+      this.timelapseLabel = this.timelapseText;
+    });
+  }
+
+  /**
+   * Opens a bar chart showing when I woke up.
+   */
+  public openTimeGraph() {
+    this.timegraphLabel = this.loadingText;
+    this.dialog.open(TimeGraphComponent, {
+      data: {
+        times: this.times
+      },
+      maxHeight: '90vh'
+    }).afterClosed().subscribe(result => {
+      this.timegraphLabel = this.timegraphText;
     });
   }
 
@@ -186,4 +226,5 @@ export class ImageDialog {
 })
 export class LocationDialog {
   constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
+  map = "blankmap.PNG"
 }

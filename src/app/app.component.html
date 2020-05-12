@@ -1,11 +1,15 @@
 <div class="page">
-  <h1>#mywakingview</h1>
-  <p>When I was in England I saw an art exhibit where a guy stamped and mailed a postcard with the time he woke up everyday. So, taking inspiration from that, and a couple of other things, for a full year I took a picture of what I saw out my window when I woke up, with the date, time, and location.</p>
+  <div class="info">
+    <h1><a href="https://www.instagram.com/explore/tags/mywakingview/" target="_blank">#mywakingview</a></h1>
+    <h2>by <a href="http://www.instagram.com/columcross" target="_blank">Colum Cross</a></h2>
+    <p>When I was in England I saw an art exhibit where a guy stamped and mailed a postcard with the time he woke up everyday. So, taking inspiration from that, and a couple of other things, for a full year I took a picture of what I saw out my window when I woke up, with the date, time, and location.</p>
+  </div>
   <h2 *ngIf="!finishedLoading">Loading...</h2>
   <div *ngIf="finishedLoading" class="content">
     <div class="buttons">
-      <button mat-raised-button (click)="openTimelapse()">Timelapse</button>
-      <button mat-raised-button (click)="openLocationDialog()">Where I Awoke</button>
+      <button mat-raised-button (click)="openTimelapse()">{{timelapseLabel}}</button>
+      <button mat-raised-button (click)="openTimeGraph()">{{timegraphLabel}}</button>
+      <button mat-raised-button (click)="openLocationDialog()">{{mapLabel}}</button>
     </div>
     <div *ngFor="let post of allPosts" class="posts">
       <div class="column">

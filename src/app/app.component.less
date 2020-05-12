@@ -1,15 +1,33 @@
+.info {
+    a {
+        color: black;
+        text-decoration: underline;
+        &:hover {
+            color: gray !important;
+        }
+        &:visited {
+            color: black;
+        }
+    }
+    h1, h2 {
+        text-align: center;
+    }
+    p {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        text-align: justify;
+    }
+}
+
+
 .page {
     padding: 10px;
     margin: auto;
 }
-.page > p {
-    max-width: 600px;
-    margin: auto;
-    padding: 20px;
-    text-align: justify;
-}
 .content {
     margin: auto;
+    margin-bottom: 20px;
     text-align: center;
     .posts {
         margin-left: 20px;

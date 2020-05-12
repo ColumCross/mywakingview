@@ -1,9 +1,10 @@
 <h1 mat-dialog-title>Where I Awoke</h1>
 <div mat-dialog-content>
-    <p>I woke up in Buffalo, New York, USA {{data.locations.buffalo}} times.</p>
-    <p>I woke up in Thousand Islands, Ontario, Canada {{data.locations.rockport}} times.</p>
-    <p>I woke up in Athens, Maine, USA {{data.locations.athens}} times.</p>
-    <p>I woke up in Albany, New York, USA {{data.locations.albany}} times.</p>
-    <p>I woke up in Annapolis, Maryland, USA {{data.locations.annapolis}} times.</p>
-    <p>I woke up in Toronto, Ontario, Canada {{data.locations.toronto}} times.</p>
+    <p (mouseover)="this.map='buffalo.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Buffalo, New York, USA {{data.locations.buffalo}} times.</p>
+    <p (mouseover)="this.map='rockport.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Thousand Islands, Ontario, Canada {{data.locations.rockport}} times.</p>
+    <p (mouseover)="this.map='athens.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Athens, Maine, USA {{data.locations.athens}} times.</p>
+    <p (mouseover)="this.map='albany.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Albany, New York, USA {{data.locations.albany}} times.</p>
+    <p (mouseover)="this.map='annapolis.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Annapolis, Maryland, USA {{data.locations.annapolis}} times.</p>
+    <p (mouseover)="this.map='toronto.png'" (mouseout)="this.map='blankmap.PNG'">I woke up in Toronto, Ontario, Canada {{data.locations.toronto}} times.</p>
+    <img src="assets/mapimgs/{{this.map}}" alt="Map">
 </div>

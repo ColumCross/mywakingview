@@ -1,5 +1,7 @@
 # Mywakingview
 
+When I was in England I saw an art exhibit where a guy stamped and mailed a postcard with the time he woke up everyday. So, taking inspiration from that, and a couple of other things, for a full year I took a picture of what I saw out my window when I woke up, with the date, time, and location.  
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
 
 ## Development server

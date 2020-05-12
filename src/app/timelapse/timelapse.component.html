@@ -1,13 +1,10 @@
 <div mat-dialog-content>
-    <ngb-carousel *ngIf="images" [interval]="400">
+    <ngb-carousel *ngIf="images" [interval]="250">
         <ng-template ngbSlide *ngFor="let img of posts; index as i">
-            <div class="carousel-caption">
-              <h3>Day {{i + 1}}</h3>
+            <div class="picsum-img-wrapper">
+              <img [src]="img.imageURL" alt="My image {{i + 1}} description" style="max-width:500px;width: 100%">
             </div>
-              <div class="picsum-img-wrapper">
-                <img [src]="img.imageURL" alt="My image {{i + 1}} description" style="max-width:500px;width: 100%">
-              </div>
-            <!-- </a> -->
+            <h3 class="timelapsecaption">Day {{i + 1}}</h3>
         </ng-template>
     </ngb-carousel>
 </div>
